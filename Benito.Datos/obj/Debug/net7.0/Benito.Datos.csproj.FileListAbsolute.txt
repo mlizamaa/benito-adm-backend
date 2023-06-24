@@ -1,0 +1,12 @@
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/bin/Debug/net7.0/Benito.Datos.deps.json
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/bin/Debug/net7.0/Benito.Datos.dll
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/bin/Debug/net7.0/Benito.Datos.pdb
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/Benito.Datos.csproj.AssemblyReference.cache
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/Benito.Datos.GeneratedMSBuildEditorConfig.editorconfig
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/Benito.Datos.AssemblyInfoInputs.cache
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/Benito.Datos.AssemblyInfo.cs
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/Benito.Datos.csproj.CoreCompileInputs.cache
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/Benito.Datos.dll
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/refint/Benito.Datos.dll
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/Benito.Datos.pdb
+/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/Debug/net7.0/ref/Benito.Datos.dll
