@@ -10,15 +10,16 @@ namespace Benito.Negocio {
     public interface IInventarioManager
     {
         StockVenta AgregarAtockVenta(int productoId, int cantidad);
-        StockInventario AgregarStockBodega(int productoId, int cantidad);
-        StockInventario ObtenerStockBodega(int id);
+        InventarioBodega AgregarInventarioBodega(int productoId, int cantidad);
+        InventarioBodega ObtenerInventarioBodega(int id);
+        List<InventarioBodega> ListarInventarioBodega();
     }
 
     public class InventarioManager : IInventarioManager
     {
-        private readonly InventarioRepository _inventarioRepository;
+        private readonly StockInventarioRepository _inventarioRepository;
         private readonly IRepository<Producto> _productoRepository;
-        public InventarioManager(InventarioRepository inventarioRepository,
+        public InventarioManager(StockInventarioRepository inventarioRepository,
             IRepository<Producto> productoRepository)
         {
             _inventarioRepository = inventarioRepository;
@@ -44,42 +45,48 @@ namespace Benito.Negocio {
             _inventarioRepository.Editar(inventarioBodega);
 
             // Obtener el inventario de venta.
-            var inventarioVenta = _inventarioRepository.Obtener(productoId,2);
+            //var inventarioBodega = _inventarioRepository.Obtener(productoId,1);
 
             // Aumenta la cantidad en el inventario de venta.
-            inventarioVenta.ModificarCantidad(cantidad);
+            //inventarioVenta.ModificarCantidad(cantidad);
 
             // Actualiza el inventario de venta.
-            _inventarioRepository.Editar(inventarioVenta);
+            //_inventarioRepository.Editar(inventarioVenta);
             var p = _productoRepository.Obtener(productoId);
-            return new StockVenta { Cantidad = inventarioVenta.Cantidad, Id =inventarioVenta.Id, Producto = p};
+            return new StockVenta { Cantidad = inventarioBodega.Cantidad, Id = inventarioBodega.Id, Producto = p};
         }
 
-        public StockInventario AgregarStockBodega(int productoId, int cantidad)
+        public InventarioBodega AgregarInventarioBodega(int productoId, int cantidad)
         {
             // Obtener el inventario de la bodega.
             var inventarioBodega =  _inventarioRepository.Obtener(productoId, 1);
             if(inventarioBodega == null){
-                inventarioBodega = new Inventario (productoId,cantidad, TipoInventario.Bodega);
+                inventarioBodega = new Inventario (productoId,cantidad, 1);
+                _inventarioRepository.Agregar(inventarioBodega);
+            }
+            else {
+                inventarioBodega.ModificarCantidad(+cantidad);
+                _inventarioRepository.Editar(inventarioBodega);
             }
             // Disminuye la cantidad en la bodega.
-            Console.WriteLine("{0}",inventarioBodega);
-            inventarioBodega.ModificarCantidad(+cantidad);
-            Console.WriteLine("cantidad {0}",inventarioBodega.Cantidad);
-            Console.WriteLine("productoId {0}",inventarioBodega.ProductoId);
-            Console.WriteLine("productoId {0}",inventarioBodega.Tipo);
-            // Actualiza el inventario en la bodega.
-            _inventarioRepository.Agregar(inventarioBodega);
 
-            return new StockInventario { Cantidad = inventarioBodega.Cantidad, Id =inventarioBodega.Id};
+            return new InventarioBodega { Cantidad = inventarioBodega.Cantidad, Id =inventarioBodega.Id};
         }
 
-        public StockInventario ObtenerStockBodega(int id){
+        public InventarioBodega ObtenerInventarioBodega(int id){
             var inventarioBodega =  _inventarioRepository.Obtener(id,1);
             Console.WriteLine("{0}",inventarioBodega);
-            return new StockInventario { Cantidad = inventarioBodega.Cantidad, Id =inventarioBodega.Id};
+            return new InventarioBodega { Cantidad = inventarioBodega.Cantidad, Id =inventarioBodega.Id};
         }
         // Otros métodos para la gestión del inventario (agregar producto, eliminar producto, etc.)
+
+        public List<InventarioBodega> ListarInventarioBodega(){
+            return _inventarioRepository.Listar(1).Select(i=> new InventarioBodega{
+                Cantidad = i.Cantidad,
+                Id = i.Id,
+                ProductoId = i.ProductoId
+            }).ToList();
+        }
     }
 
 }

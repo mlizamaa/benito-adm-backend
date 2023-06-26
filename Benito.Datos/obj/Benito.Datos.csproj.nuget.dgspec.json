@@ -1,30 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {}
+    "/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {}
   },
   "projects": {
-    "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
+    "/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
+        "projectUniqueName": "/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
         "projectName": "Benito.Datos",
-        "projectPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
+        "projectPath": "/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
         "packagesPath": "/home/marcelo/.nuget/packages/",
-        "outputPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/",
+        "outputPath": "/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/marcelo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -35,8 +35,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -71,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.408/RuntimeIdentifierGraph.json"
         }
       }
     }

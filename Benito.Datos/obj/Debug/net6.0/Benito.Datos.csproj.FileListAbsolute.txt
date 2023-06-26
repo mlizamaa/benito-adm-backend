@@ -1,0 +1,12 @@
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/bin/Debug/net6.0/Benito.Datos.deps.json
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/bin/Debug/net6.0/Benito.Datos.dll
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/bin/Debug/net6.0/Benito.Datos.pdb
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/Benito.Datos.csproj.AssemblyReference.cache
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/Benito.Datos.GeneratedMSBuildEditorConfig.editorconfig
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/Benito.Datos.AssemblyInfoInputs.cache
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/Benito.Datos.AssemblyInfo.cs
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/Benito.Datos.csproj.CoreCompileInputs.cache
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/Benito.Datos.dll
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/refint/Benito.Datos.dll
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/Benito.Datos.pdb
+/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/obj/Debug/net6.0/ref/Benito.Datos.dll

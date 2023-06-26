@@ -1,20 +1,21 @@
 ﻿namespace Benito.Datos.Modelo{
    public class Inventario
 {
-    public int Id { get; private set; }
-    public int ProductoId { get; private set; }
-    public Producto Producto { get; private set; }  // Relación con Producto
-    public int Cantidad { get; private set; }
-    public TipoInventario Tipo { get; private set; }  // Diferencia entre inventario de bodega y de venta
+    public int Id { get; set; }
+    public int ProductoId { get; set; }
+    //public Producto Producto { get; set; }  // Relación con Producto
+    public int Cantidad { get; set; }
+    public int Tipo { get; set; }  // Diferencia entre inventario de bodega y de venta
 
-    public Inventario(int Id, int productoId, int cantidad,  TipoInventario tipo)
+    public Inventario(int id, int productoId, int cantidad,  int tipo)
     {
         ProductoId = productoId;
         Cantidad = cantidad;
         Tipo = tipo;
+        Id = id;
     }
 
-    public Inventario(int productoId, int cantidad, TipoInventario tipo)
+    public Inventario(int productoId, int cantidad, int tipo)
     {
         ProductoId = productoId;
         Cantidad = cantidad;

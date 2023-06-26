@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iCJscNmTFr+v+KSdvI0+2OdQ+Ovn1tUnUQJW8LjxZmr/W5AFuMmthZ1QrzDZzVrJt5PHAa/tvb27TPcUfnMe9Q==",
+  "dgSpecHash": "tI83i3CXKZ2MUKAa752i7DpjYG5r8aG5IeW7875fAPhoyX0NhoA5MpAiSneL0SJph3jT2859VGc9FjM7tyggdg==",
   "success": true,
-  "projectFilePath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
+  "projectFilePath": "/home/marcelo/Fuentes/mlizama/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
   "expectedPackageFiles": [
     "/home/marcelo/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/home/marcelo/.nuget/packages/dapper/2.0.138/dapper.2.0.138.nupkg.sha512",
@@ -17,6 +17,7 @@
     "/home/marcelo/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/home/marcelo/.nuget/packages/runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/home/marcelo/.nuget/packages/system.data.sqlclient/4.8.5/system.data.sqlclient.4.8.5.nupkg.sha512",
+    "/home/marcelo/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "/home/marcelo/.nuget/packages/system.security.accesscontrol/4.7.0/system.security.accesscontrol.4.7.0.nupkg.sha512",
     "/home/marcelo/.nuget/packages/system.security.principal.windows/4.7.0/system.security.principal.windows.4.7.0.nupkg.sha512"
   ],
