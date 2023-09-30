@@ -30,35 +30,6 @@ namespace Benito.Datos.Iot.Modelo {
         /// <returns>Bool</returns>
             public bool Regar(int segundos, string codActuador){
 
-                var regadores = this.Actuadores.Where(actuador=> actuador.Tipo == ETipoActuador.BombaAgua)
-                    .ToList();
-                if(regadores.Count == 0)
-                    throw new System.NotImplementedException("No se encontraron actuadores de riego en el huerto");
-
-                // inicializa un array de temporizadores asincronos
-                System.Threading.Tasks.Task[] temporizadores = new System.Threading.Tasks.Task[Actuadores.Length];
-                regadores.ForEach(actuador=>  {
-                    // si el codigo del actuador es vacio o es igual al codigo del actuador actual
-                    if(string.IsNullOrEmpty(codActuador) || actuador.Codigo == codActuador){
-                        // se enciende el actuador
-                        actuador.Estado = EEstadoActuador.Encendido;
-                        // se crea un temporizador asincrono
-                        temporizadores[regadores.IndexOf(actuador)] = System.Threading.Tasks.Task.Run(async () => {
-                            // se espera la cantidad de segundos indicados
-                            await System.Threading.Tasks.Task.Delay(segundos * 1000);
-                            // se apaga el actuador
-                            actuador.Estado = EEstadoActuador.Apagado;
-                        });
-                    }
-                });
-
-                // se espera a que todos los temporizadores terminen
-                System.Threading.Tasks.Task.WaitAll(temporizadores);
-
-                // valida que todos los actuadores esten apagados
-                if(regadores.Any(actuador=> actuador.Estado == EEstadoActuador.Encendido))
-                    return false;
-                
                 return true;
 
 
