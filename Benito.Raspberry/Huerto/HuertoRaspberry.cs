@@ -23,7 +23,7 @@ namespace Benito.Raspberry.Huerto
                     throw new System.NotImplementedException("No se encontraron actuadores de riego en el huerto");
 
                 // inicializa un array de temporizadores asincronos
-                System.Threading.Tasks.Task[] temporizadores = new System.Threading.Tasks.Task[this._huerto.Actuadores.Length];
+                System.Threading.Tasks.Task[] temporizadores = new System.Threading.Tasks.Task[string.IsNullOrEmpty(codActuador)? this._huerto.Actuadores.Length : 1];
                 regadores.ForEach(actuador=>  {
                     // si el codigo del actuador es vacio o es igual al codigo del actuador actual
                     if(string.IsNullOrEmpty(codActuador) || actuador.Codigo == codActuador){
@@ -31,10 +31,10 @@ namespace Benito.Raspberry.Huerto
                         actuador.Estado = EEstadoActuador.Encendido;
                         // se enciende el pin del actuador
                         _gpioController.OpenPin(actuador.Pines.First().Value, PinMode.Output);
-                        _gpioController.Write(actuador.Pines.First().Value, PinValue.High);
+                        _gpioController.Write(actuador.Pines.First(p=>  p.Key == "SIGNAL").Value, PinValue.High);
                         Console.WriteLine("actuador {0} Encendido",actuador.Nombre);
                         // se crea un temporizador asincrono
-                        temporizadores[actuador.Pines[0].Value] = System.Threading.Tasks.Task.Run(async () => {
+                        temporizadores[0] = System.Threading.Tasks.Task.Run(async () => {
                             // se espera el tiempo de riego
                             await System.Threading.Tasks.Task.Delay(segundos * 1000);
                             // se apaga el actuador
