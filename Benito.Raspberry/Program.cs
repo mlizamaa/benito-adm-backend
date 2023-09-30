@@ -22,10 +22,11 @@ huerto.Actuadores = new Actuador[]{
 };
 var huertoRasperry = new HuertoRaspberry(huerto);
 
-huerto.Actuadores.ToList().ForEach(actuador=> Console.WriteLine($"Actuador {actuador.Nombre} estado {actuador.Estado}"));   
+
 var riego = huertoRasperry.RegarAsync(5, "B1");
-huerto.Actuadores.ToList().ForEach(actuador=> Console.WriteLine($"Actuador {actuador.Nombre} estado {actuador.Estado}"));   
-System.Threading.Tasks.Task.WaitAll(riego);
-huerto.Actuadores.ToList().ForEach(actuador=> Console.WriteLine($"Actuador {actuador.Nombre} estado {actuador.Estado}"));
+Console.WriteLine("Regando...");
+riego.Wait();
+Console.WriteLine("Riego terminado");
+
 
 

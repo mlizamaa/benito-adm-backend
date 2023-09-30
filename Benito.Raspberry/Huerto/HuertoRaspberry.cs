@@ -11,13 +11,13 @@ namespace Benito.Raspberry.Huerto
         public HuertoRaspberry(Benito.Datos.Iot.Modelo.Huerto huerto)
         {
             _gpioController = new GpioController();
-            _huerto = new Benito.Datos.Iot.Modelo.Huerto();
+            _huerto = huerto;
 
         }
 
         public async Task<bool> RegarAsync(int segundos, string codActuador)
         {
-            var regadores = this._huerto.Actuadores.Where(actuador=> actuador.Tipo == ETipoActuador.BombaAgua)
+            var regadores = this._huerto.Actuadores.ToList().Where(actuador=> actuador.Tipo == ETipoActuador.BombaAgua)
                     .ToList();
                 if(regadores.Count == 0)
                     throw new System.NotImplementedException("No se encontraron actuadores de riego en el huerto");
@@ -30,8 +30,19 @@ namespace Benito.Raspberry.Huerto
                         // se enciende el actuador
                         actuador.Estado = EEstadoActuador.Encendido;
                         // se enciende el pin del actuador
-                        _gpioController.Write(actuador.Pines[0].Value, PinValue.High);
-                        Console.WriteLine("Encendido");
+                        _gpioController.OpenPin(actuador.Pines.First().Value, PinMode.Output);
+                        _gpioController.Write(actuador.Pines.First().Value, PinValue.High);
+                        Console.WriteLine("actuador {0} Encendido",actuador.Nombre);
+                        // se crea un temporizador asincrono
+                        temporizadores[actuador.Pines[0].Value] = System.Threading.Tasks.Task.Run(async () => {
+                            // se espera el tiempo de riego
+                            await System.Threading.Tasks.Task.Delay(segundos * 1000);
+                            // se apaga el actuador
+                            actuador.Estado = EEstadoActuador.Apagado;
+                            // se apaga el pin del actuador
+                            _gpioController.Write(actuador.Pines[0].Value, PinValue.Low);
+                            Console.WriteLine("actuador {0} Apagado",actuador.Nombre);
+                        });
                     }
                 });
 
