@@ -1,16 +1,19 @@
 ﻿
 using Benito.Datos;
 using Benito.Datos.Dto;
-using Benito.Datos.Modelo;
+using Benito.Datos.ECommerce.Modelo;
 
 namespace Benito.Negocio {
 
     public interface IProductoManager
     {
        
-        ProductoDTO RegistrarProducto(string nombre, decimal precio);
+        ProductoDTO Crear(ProductoDTO producto);
 
-        List<ProductoDTO> ObtenerProductos();
+        List<ProductoDTO> Listar();
+        ProductoDTO Obtener(int id);
+        ProductoDTO Actualizar(ProductoDTO producto);
+        void Eliminar(int id);
     }
 
 }

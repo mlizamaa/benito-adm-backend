@@ -1,38 +1,56 @@
 ﻿
 using Benito.Datos;
 using Benito.Datos.Dto;
-using Benito.Datos.Modelo;
+using Benito.Datos.ECommerce.Modelo;
 using Benito.Datos.Repositorio;
 using AutoMapper;
 namespace Benito.Negocio {
 
     public class ProductoManager : IProductoManager
     {
-        private readonly IRepository<Producto> _productoRepository;
+        private readonly IRepositorioCrud<Producto> _productoRepository;
         // Clase de lógica de negocio para el módulo de productos
-        public ProductoManager(IRepository<Producto> productoRepository){
+        public ProductoManager(IRepositorioCrud<Producto> productoRepository){
             _productoRepository = productoRepository;
         }
-        public ProductoDTO RegistrarProducto(string nombre, decimal precio)
-        {
-            // Lógica para registrar un producto en la base de datos
-            // ...
-            var entidad =  _productoRepository.Agregar(new Producto {
-                Nombre = nombre,
-                Precio = precio
-            });
-            // Retornar DTO del producto registrado
-            var productoDTO = new ProductoDTO
-            {
-                Id = entidad.Id, // Id asignado al producto registrado
-                Nombre = entidad.Nombre,
-                Precio = entidad.Precio
-            };
 
-            return productoDTO;
+        public ProductoDTO Actualizar(ProductoDTO producto)
+        {
+           // Mapea el DTO a entidad con AutoMapper
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductoDTO, Producto>());
+            var mapper = config.CreateMapper();
+            var entidad = mapper.Map<Producto>(producto);
+            // Actualiza el producto en la base de datos
+            _productoRepository.Actualizar(entidad);
+            // Retorna el DTO del producto actualizado
+            return producto;
+
         }
 
-        public List<ProductoDTO> ObtenerProductos()
+        public ProductoDTO Crear(ProductoDTO producto)
+        {
+           // mapear DTO a entidad con AutoMapper
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ProductoDTO, Producto>());
+            var mapper = config.CreateMapper();
+            var entidad = mapper.Map<Producto>(producto);
+            // crear el producto en la base de datos
+            entidad = _productoRepository.Crear(entidad);
+            // transformar la entidad en dto mediante automapper
+            var config2 = new MapperConfiguration(cfg => cfg.CreateMap<Producto, ProductoDTO>());
+            var mapper2 = config2.CreateMapper();
+            producto = mapper2.Map<ProductoDTO>(entidad);
+            // retornar el DTO del producto
+            return producto;
+        }
+
+        public void Eliminar(int id)
+        {
+            // eliimnar el producto de la base de datos
+            _productoRepository.Eliminar(id);
+
+        }
+
+        public List<ProductoDTO> Listar()
         {
            var config = new MapperConfiguration(cfg => cfg.CreateMap<Producto, ProductoDTO>());
            var mapper = config.CreateMapper();
@@ -41,7 +59,17 @@ namespace Benito.Negocio {
            return productos;
         }
 
-
+        public ProductoDTO Obtener(int id)
+        {
+            // obtener el producto de la base de datos
+            var productoBd = _productoRepository.Obtener(id);
+            // mapear entidad a DTO con AutoMapper
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Producto, ProductoDTO>());
+            var mapper = config.CreateMapper();
+            var producto = mapper.Map<ProductoDTO>(productoBd);
+            // retornar el DTO del producto
+            return producto;
+        }
     }
 
 }

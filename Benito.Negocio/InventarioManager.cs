@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using Benito.Datos;
 using Benito.Datos.Dto;
-using Benito.Datos.Modelo;
+using Benito.Datos.ECommerce.Modelo;
 using Benito.Datos.Repositorio;
 using AutoMapper;
 namespace Benito.Negocio {
@@ -18,9 +18,9 @@ namespace Benito.Negocio {
     public class InventarioManager : IInventarioManager
     {
         private readonly StockInventarioRepository _inventarioRepository;
-        private readonly IRepository<Producto> _productoRepository;
+        private readonly IRepositorioCrud<Producto> _productoRepository;
         public InventarioManager(StockInventarioRepository inventarioRepository,
-            IRepository<Producto> productoRepository)
+            IRepositorioCrud<Producto> productoRepository)
         {
             _inventarioRepository = inventarioRepository;
             _productoRepository = productoRepository;
@@ -75,7 +75,6 @@ namespace Benito.Negocio {
 
         public InventarioBodega ObtenerInventarioBodega(int id){
             var inventarioBodega =  _inventarioRepository.Obtener(id,1);
-            Console.WriteLine("{0}",inventarioBodega);
             return new InventarioBodega { Cantidad = inventarioBodega.Cantidad, Id =inventarioBodega.Id};
         }
         // Otros métodos para la gestión del inventario (agregar producto, eliminar producto, etc.)

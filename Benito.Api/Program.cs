@@ -1,5 +1,6 @@
 using Benito.Datos;
-using Benito.Datos.Modelo;
+using Benito.Datos.ECommerce.Modelo;
+using Benito.Datos.Repositorio;
 using Benito.Negocio;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,15 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 IConfiguration configuration = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("./Benito.Api/appsettings.Development.json")
+        .AddJsonFile("./appsettings.Development.json")
         .Build();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IRepositorio<Producto>, ProductoRepositorio>();
+builder.Services.AddTransient<IRepositorioCrud<Producto>, ProductoRepository>();
 builder.Services.AddTransient<IProductoManager, ProductoManager>();
 builder.Services.AddSingleton(configuration);
+builder.Services.AddTransient<IRepositorioCrud<Producto>, ProductoRepository>();
 builder.Services.AddCors(options =>{
     options.AddDefaultPolicy(builder =>
     {

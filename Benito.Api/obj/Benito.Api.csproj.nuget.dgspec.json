@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/marcelo/Fuentes/benito-adm-backend/Benito.Api/Benito.Api.csproj": {}
+    "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Api/Benito.Api.csproj": {}
   },
   "projects": {
-    "/home/marcelo/Fuentes/benito-adm-backend/Benito.Api/Benito.Api.csproj": {
+    "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Api/Benito.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Api/Benito.Api.csproj",
+        "projectUniqueName": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Api/Benito.Api.csproj",
         "projectName": "Benito.Api",
-        "projectPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Api/Benito.Api.csproj",
+        "projectPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Api/Benito.Api.csproj",
         "packagesPath": "/home/marcelo/.nuget/packages/",
-        "outputPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Api/obj/",
+        "outputPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/marcelo/.nuget/NuGet/NuGet.Config"
@@ -20,18 +20,17 @@
           "net7.0"
         ],
         "sources": {
-          "/usr/share/dotnet/sdk/7.0.304/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
-                "projectPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj"
+              "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
+                "projectPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/Benito.Datos.csproj"
               },
-              "/home/marcelo/Fuentes/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj": {
-                "projectPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj"
+              "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj": {
+                "projectPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj"
               }
             }
           }
@@ -82,31 +81,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
+    "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
+        "projectUniqueName": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
         "projectName": "Benito.Datos",
-        "projectPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
+        "projectPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/Benito.Datos.csproj",
         "packagesPath": "/home/marcelo/.nuget/packages/",
-        "outputPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/obj/",
+        "outputPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/marcelo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -117,8 +116,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -131,6 +130,10 @@
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -153,34 +156,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/marcelo/Fuentes/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj": {
+    "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj",
+        "projectUniqueName": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj",
         "projectName": "Benito.Negocio",
-        "projectPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj",
+        "projectPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Negocio/Benito.Negocio.csproj",
         "packagesPath": "/home/marcelo/.nuget/packages/",
-        "outputPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Negocio/obj/",
+        "outputPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Negocio/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/marcelo/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net6.0"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
-                "projectPath": "/home/marcelo/Fuentes/benito-adm-backend/Benito.Datos/Benito.Datos.csproj"
+              "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/Benito.Datos.csproj": {
+                "projectPath": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Datos/Benito.Datos.csproj"
               }
             }
           }
@@ -192,8 +195,8 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -210,7 +213,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.111/RuntimeIdentifierGraph.json"
         }
       }
     }
