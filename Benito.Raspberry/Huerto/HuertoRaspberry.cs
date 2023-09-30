@@ -29,21 +29,13 @@ namespace Benito.Raspberry.Huerto
                     if(string.IsNullOrEmpty(codActuador) || actuador.Codigo == codActuador){
                         // se enciende el actuador
                         actuador.Estado = EEstadoActuador.Encendido;
-                        
                         // se enciende el pin del actuador
                         _gpioController.Write(actuador.Pines[0].Value, PinValue.High);
-                        
-
-                        // se crea un temporizador asincrono
-                        temporizadores[regadores.IndexOf(actuador)] = System.Threading.Tasks.Task.Run(async () => {
-                            // se espera la cantidad de segundos indicados
-                            await System.Threading.Tasks.Task.Delay(segundos * 1000);
-                            // se apaga el actuador
-                            actuador.Estado = EEstadoActuador.Apagado;
-                        });
+                        Console.WriteLine("Encendido");
                     }
                 });
 
+                
                 // se espera a que todos los temporizadores terminen
                 System.Threading.Tasks.Task.WaitAll(temporizadores);
 
