@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Benito.Negocio;
+using Benito.Negocio.Managers.ECommerce;
 using Benito.Datos.Dto;
 namespace Benito.Api.Controllers
 {
@@ -28,13 +28,18 @@ namespace Benito.Api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] ProductoDTO producto)
+        public IActionResult Post([FromBody] ProductoDto producto)
         {
-            return Ok(_productoManager.Crear(producto));
+            try{
+                return Ok(_productoManager.Crear(producto));
+            }
+            catch(System.Exception ex){
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] ProductoDTO producto)
+        public IActionResult Put([FromBody] ProductoDto producto)
         {
             return Ok(_productoManager.Actualizar(producto));
         }

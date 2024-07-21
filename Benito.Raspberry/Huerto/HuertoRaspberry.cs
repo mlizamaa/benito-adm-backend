@@ -24,6 +24,7 @@ namespace Benito.Raspberry.Huerto
 
                 // inicializa un array de temporizadores asincronos
                 System.Threading.Tasks.Task[] temporizadores = new System.Threading.Tasks.Task[string.IsNullOrEmpty(codActuador)? this._huerto.Actuadores.Length : 1];
+                var contadorActuadores = 0;
                 regadores.ForEach(actuador=>  {
                     // si el codigo del actuador es vacio o es igual al codigo del actuador actual
                     if(string.IsNullOrEmpty(codActuador) || actuador.Codigo == codActuador){
@@ -34,7 +35,7 @@ namespace Benito.Raspberry.Huerto
                         _gpioController.Write(actuador.Pines.First(p=>  p.Key == "SIGNAL").Value, PinValue.High);
                         Console.WriteLine("actuador {0} Encendido",actuador.Nombre);
                         // se crea un temporizador asincrono
-                        temporizadores[0] = System.Threading.Tasks.Task.Run(async () => {
+                        temporizadores[contadorActuadores] = System.Threading.Tasks.Task.Run(async () => {
                             // se espera el tiempo de riego
                             await System.Threading.Tasks.Task.Delay(segundos * 1000);
                             // se apaga el actuador
@@ -43,6 +44,7 @@ namespace Benito.Raspberry.Huerto
                             _gpioController.Write(actuador.Pines[0].Value, PinValue.Low);
                             Console.WriteLine("actuador {0} Apagado",actuador.Nombre);
                         });
+                        contadorActuadores++;
                     }
                 });
 

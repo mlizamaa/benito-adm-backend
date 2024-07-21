@@ -2,10 +2,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Benito.Datos\Benito.Datos.csproj" />
+    <ProjectReference Include="..\Benito.Model\Benito.Model.csproj" />  
   </ItemGroup>
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
