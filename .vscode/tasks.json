@@ -1,12 +1,19 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{	
-			"type": "dotnet",
-			"task": "watch Benito.Api",
-			"file": "/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Api/Benito.Api.csproj",
-			"problemMatcher": [],
-			"label": "dotnet: watch Benito.Negocio"
+		{
+			"label": "build",
+			"command": "dotnet",
+			"type": "process",
+			"args": [
+				"build",
+				"${workspaceFolder}/Benito.Api/Benito.Api.csproj"				
+			],
+			"problemMatcher": "$msCompile"
+			
+		
 		}
 	]
 }
+
+/media/marcelo/Respaldo/Fuentes/mlizama/benito/benito-adm-backend/Benito.Api/bin/Debug/net7.0/Benito.Api.dll(1,1): error MSB4025: The project file could not be loaded. Data at the root level is invalid. Line 1, position 1.

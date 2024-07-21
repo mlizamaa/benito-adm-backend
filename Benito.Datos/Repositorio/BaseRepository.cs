@@ -13,7 +13,7 @@ namespace Benito.Datos.Repositorio{
     public BaseRepository(IConfiguration configuration)
     {
        // _connectionString = configuration.GetConnectionString("sql");
-        _connectionString = "Server=localhost,1433; Database=benito; User ID=sa; Password=Marcelo1597;";
+        _connectionString = "Server=173.248.151.67,1533; Database=template-demo; User ID=mlizama; Password=Marcelo1597; Encrypt=False; MultipleActiveResultSets=True; TrustServerCertificate=True";
     }
 
     protected abstract string NombreTabla { get; }

@@ -31,6 +31,8 @@ public class BenitoDbContext : DbContext
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        // lee el connection string desde el archivo de configuracion appsettings.json
+        
         optionsBuilder.UseSqlServer("Server=173.248.151.67,1533; Database=template-demo; User ID=mlizama; Password=Marcelo1597; Encrypt=False; MultipleActiveResultSets=True; TrustServerCertificate=True");
     }
 } 
