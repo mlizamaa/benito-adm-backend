@@ -52,5 +52,8 @@ public class VentaDTO
     public DateTime FechaVenta { get; set; }
 }
 
-
+public class AutenticacionDto{
+    public string? Usuario { get; set; }
+    public string? Password { get; set; }
+}
 }

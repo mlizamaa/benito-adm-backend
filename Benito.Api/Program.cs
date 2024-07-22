@@ -9,6 +9,22 @@ using Benito.Negocio.Managers.ECommerce;
 using Benito.Negocio.Managers.Despensa;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using System.Collections.Generic;
+using System.IO;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -43,6 +59,60 @@ var builder = WebApplication.CreateBuilder(args);
         });
     });
 
+    // Configurar la autenticación JWT
+    var key = Encoding.ASCII.GetBytes("68a59d75-6ac4-4ae2-8725-4c2fef066aa7"); 
+    builder.Services.AddAuthentication(x =>
+    {
+        x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(x =>
+    {
+        x.RequireHttpsMetadata = false;
+        x.SaveToken = true;
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+
+    builder.Services.AddSwaggerGen(options =>
+    {
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Description = @"Autenticacion mediante el esquema JWT \r\n\r\n 
+                            Ingrese 'Bearer' [espacio] y el token obtenido en la autenticación. \r\n\r\n
+                            Ejemplo: 'Bearer 12345abcdef'",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
+
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    },
+                    Scheme = "oauth2",
+                    Name = "Bearer",
+                    In = ParameterLocation.Header,
+                },
+                new List<string>()
+            }
+        });
+    });
+
+    builder.Services.AddControllers();
+
     var app = builder.Build();
 
 
@@ -52,12 +122,20 @@ var builder = WebApplication.CreateBuilder(args);
     {
         app.UseSwagger();
         app.UseSwaggerUI();
+        app.UseDeveloperExceptionPage();
     }
 
-    // app.UseHttpsRedirection();
-    app.UseCors();
+    app.UseHttpsRedirection();
+    app.UseRouting();
+    app.UseAuthentication();
     app.UseAuthorization();
 
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();
+    });
+
+    app.UseCors();
     app.MapControllers();
 
     app.Run();

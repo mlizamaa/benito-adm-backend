@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Benito.Negocio.Managers.ECommerce;
 using Benito.Datos.Dto;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Benito.Api.Controllers
 {
     [ApiController]
@@ -16,12 +18,14 @@ namespace Benito.Api.Controllers
 
         // metodo para listar productos mediante el manager
         [HttpGet]
+        [Authorize]
         public IActionResult Get(int id)
         {
             return Ok(_productoManager.Obtener(id));
         }
 
         [HttpGet("GetAll")]
+        [Authorize]
         public IActionResult GetAll(int id)
         {
             return Ok(_productoManager.Listar());

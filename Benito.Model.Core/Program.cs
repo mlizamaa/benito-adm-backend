@@ -19,7 +19,6 @@ using Z.Dapper.Plus.DapperPlusExpressionMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.SqlServer;
-using Microsoft.Extensions.Configuration;
 using Benito.Model;
 
 public class Program
