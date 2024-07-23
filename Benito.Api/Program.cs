@@ -30,9 +30,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
     IConfiguration configuration = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory() )
             .AddJsonFile("appsettings.json", true)
-            
+            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true)
             .Build();
 
     builder.Services.AddControllers();
@@ -60,7 +59,7 @@ var builder = WebApplication.CreateBuilder(args);
     });
 
     // Configurar la autenticación JWT
-    var key = Encoding.ASCII.GetBytes("68a59d75-6ac4-4ae2-8725-4c2fef066aa7"); 
+    var key = Encoding.ASCII.GetBytes(configuration.GetSection("Jwt:Key").Value); 
     builder.Services.AddAuthentication(x =>
     {
         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

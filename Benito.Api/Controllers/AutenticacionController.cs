@@ -48,7 +48,8 @@ namespace Benito.Api.Controllers
         private string GenerateJwtToken()
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("68a59d75-6ac4-4ae2-8725-4c2fef066aa7"); // Asegúrate de que esta clave esté en tu appsettings.json
+            var key =  _configuration.GetSection("Jwt:Key").Value; // Asegúrate de que esta clave esté en tu appsettings.json
+            var encKey = Encoding.ASCII.GetBytes(key);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new Claim[]
@@ -56,7 +57,7 @@ namespace Benito.Api.Controllers
                     new Claim(ClaimTypes.Name, "test")
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(encKey), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
