@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-
+using Benito.Model;
 namespace Benito.Datos.Dto
 {
-    public class ProductoDto
+    public class ProductoDto : BenitoBaseEntity
     {
         public Guid Id { get; set; }
         /// <summary>

@@ -18,14 +18,14 @@ namespace Benito.Api.Controllers
 
         // metodo para listar productos mediante el manager
         [HttpGet]
-        [Authorize]
+      //  [Authorize]
         public IActionResult Get(int id)
         {
             return Ok(_productoManager.Obtener(id));
         }
 
         [HttpGet("GetAll")]
-        [Authorize]
+       // [Authorize]
         public IActionResult GetAll(int id)
         {
             return Ok(_productoManager.Listar());
@@ -49,7 +49,7 @@ namespace Benito.Api.Controllers
         }
 
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(Guid id)
         {
             _productoManager.Eliminar(id);
             return Ok();

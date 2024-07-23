@@ -64,8 +64,7 @@ var builder = WebApplication.CreateBuilder(args);
     {
         x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
         x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(x =>
+    }).AddJwtBearer(x =>
     {
         x.RequireHttpsMetadata = false;
         x.SaveToken = true;
@@ -126,6 +125,7 @@ var builder = WebApplication.CreateBuilder(args);
 
     app.UseHttpsRedirection();
     app.UseRouting();
+    app.UseCors();
     app.UseAuthentication();
     app.UseAuthorization();
 
@@ -134,7 +134,6 @@ var builder = WebApplication.CreateBuilder(args);
         endpoints.MapControllers();
     });
 
-    app.UseCors();
     app.MapControllers();
 
     app.Run();

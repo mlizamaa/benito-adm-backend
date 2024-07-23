@@ -37,7 +37,7 @@ namespace Benito.Negocio.Managers.ECommerce {
             // transformar la entidad en dto mediante automapper
             var config2 = new MapperConfiguration(cfg => cfg.CreateMap<Producto, ProductoDTO>());
             var mapper2 = config2.CreateMapper();
-            producto = mapper2.Map<ProductoDto>(entidad);
+            producto.Id = entidad.Id;
             // retornar el DTO del producto
             return producto;
         }
@@ -49,6 +49,12 @@ namespace Benito.Negocio.Managers.ECommerce {
 
         }
 
+        public void Eliminar(Guid id)
+        {
+            // eliimnar el producto de la base de datos
+            _productoRepository.Eliminar(id);
+
+        }
         public List<ProductoDto> Listar()
         {
            var config = new MapperConfiguration(cfg => cfg.CreateMap<Producto, ProductoDto>());

@@ -6,6 +6,7 @@
         List<T> Listar();
         T Obtener(int id);
         void Eliminar(int id);
+        void Eliminar(Guid id);
         T Actualizar(T entidad);
     }
 

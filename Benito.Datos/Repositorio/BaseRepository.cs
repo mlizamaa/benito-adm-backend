@@ -59,7 +59,7 @@ namespace Benito.Datos.Repositorio{
         }
     }
 
-    public void Eliminar(int id)
+    public void Eliminar(Guid id)
     {
         using (var connection = new SqlConnection(_connectionString))
         {
@@ -81,7 +81,12 @@ namespace Benito.Datos.Repositorio{
             return resultado;
         }
     }
-}
+
+        public void Eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
 
 }
