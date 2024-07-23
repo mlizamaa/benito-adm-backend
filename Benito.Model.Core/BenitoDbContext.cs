@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.Extensions.Configuration;
+
 public class BenitoDbContext : DbContext
 {       
     //entities
@@ -32,7 +34,11 @@ public class BenitoDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         // lee el connection string desde el archivo de configuracion appsettings.json
+        IConfigurationRoot configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+        optionsBuilder.UseSqlServer(configuration.GetConnectionString("sql"));
         
-        optionsBuilder.UseSqlServer("Server=173.248.151.67,1533; Database=template-demo; User ID=mlizama; Password=Marcelo1597; Encrypt=False; MultipleActiveResultSets=True; TrustServerCertificate=True");
     }
 } 

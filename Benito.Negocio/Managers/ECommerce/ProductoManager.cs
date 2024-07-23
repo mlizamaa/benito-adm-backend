@@ -75,6 +75,18 @@ namespace Benito.Negocio.Managers.ECommerce {
             // retornar el DTO del producto
             return producto;
         }
+
+        public ProductoDto Obtener(Guid id)
+        {
+            // obtener el producto de la base de datos
+            var productoBd = _productoRepository.Obtener(id);
+            // mapear entidad a DTO con AutoMapper
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Producto, ProductoDto>());
+            var mapper = config.CreateMapper();
+            var producto = mapper.Map<ProductoDto>(productoBd);
+            // retornar el DTO del producto
+            return producto;
+        }
     }
 
 }

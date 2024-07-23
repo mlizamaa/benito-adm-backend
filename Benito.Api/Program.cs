@@ -41,7 +41,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddTransient<IRepositorioCrud<Producto>, ProductoRepository>();
     builder.Services.AddTransient<IProductoManager, ProductoManager>();
     builder.Services.AddSingleton(configuration);
-    builder.Services.AddDbContext<BenitoDbContext>(options => options.UseSqlServer("Server=localhost,1433; Database=benito; User ID=sa; Password=Marcelo1597;TrustServerCertificate=True;"));    
+    builder.Services.AddDbContext<BenitoDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("sql")));    
     builder.Services.AddTransient<IItemRepository, ItemRepository>();
     builder.Services.AddTransient<IBenitoBaseRepository<ItemDespensa>, BenitoBaseRepository<ItemDespensa>>();
     builder.Services.AddTransient<IBenitoBaseRepository<Sensor>, BenitoBaseRepository<Sensor>>();

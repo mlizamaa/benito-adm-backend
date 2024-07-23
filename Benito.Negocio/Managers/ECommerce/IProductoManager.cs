@@ -12,6 +12,7 @@ namespace Benito.Negocio.Managers.ECommerce{
 
         List<ProductoDto> Listar();
         ProductoDto Obtener(int id);
+        ProductoDto Obtener(Guid id);
         ProductoDto Actualizar(ProductoDto producto);
         void Eliminar(int id);
         void Eliminar(Guid id);

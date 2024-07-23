@@ -12,8 +12,7 @@ namespace Benito.Datos.Repositorio{
 
     public BaseRepository(IConfiguration configuration)
     {
-       // _connectionString = configuration.GetConnectionString("sql");
-        _connectionString = "Server=173.248.151.67,1533; Database=template-demo; User ID=mlizama; Password=Marcelo1597; Encrypt=False; MultipleActiveResultSets=True; TrustServerCertificate=True";
+        _connectionString = configuration.GetConnectionString("sql")!;
     }
 
     protected abstract string NombreTabla { get; }
@@ -85,6 +84,17 @@ namespace Benito.Datos.Repositorio{
         public void Eliminar(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public T Obtener(Guid id)
+        {
+             using (var connection = new SqlConnection(_connectionString))
+            {
+                var parametros = new DynamicParameters();
+                parametros.Add("Id", id);
+                var resultado = connection.Query<T>(NombreProcedimientoObtener, parametros, commandType: CommandType.StoredProcedure).SingleOrDefault()!;
+                return resultado;
+            }
         }
     }
 
